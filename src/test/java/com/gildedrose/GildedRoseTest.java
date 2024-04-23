@@ -15,6 +15,8 @@ class GildedRoseTest {
         assertEquals("foo", app.items[0].name);
     }
 
+    ///Testing the Conjured Item degrade quality for each passing day
+    ///The Quality should reduce by twice
     @Test
     void testConjQuality() {
         Item[] items = new Item[] { new Item("Conjured Mana Cake", 3, 6) };
@@ -23,6 +25,8 @@ class GildedRoseTest {
         assertEquals(4, app.items[0].quality);
     }
 
+    ///Testing the Conjured Item degrade quality for on selling day
+    ///The Quality should reduce by four times
     @Test
     void testConjQualOnSellIn() {
         Item[] items = new Item[] { new Item("Conjured Mana Cake", 0, 6) };
@@ -30,6 +34,9 @@ class GildedRoseTest {
         app.updateQuality();
         assertEquals(2, app.items[0].quality);
     }
+
+    ///Testing the Conjured Item degrade quality after selling day is passed
+    ///The Quality should reduce by four times
     @Test
     void testConjQualNegativeSellIn() {
         Item[] items = new Item[] { new Item("Conjured Mana Cake", -1, 6) };
