@@ -106,4 +106,14 @@ class GildedRoseTest {
         app.updateQuality();
         assertFalse(app.items[0].quality>50);
     }
+
+    ///Testing the other item quality
+    ///The Quality should increase more than 50
+    @Test
+    void testOtherItemQuality() {
+        Item[] items = new Item[] { new Item("Elixir of the Mongoose", 5, 7) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertTrue(app.items[0].quality<7);
+    }
 }
