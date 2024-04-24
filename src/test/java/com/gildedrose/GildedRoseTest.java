@@ -2,6 +2,8 @@ package com.gildedrose;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Objects;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class GildedRoseTest {
@@ -53,5 +55,55 @@ class GildedRoseTest {
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertTrue(app.items[0].quality>-1);
+    }
+
+    ///Testing the item Aged brie quality
+    ///The Quality should not decrease
+    @Test
+    void testItemAgedBrieQuality() {
+        Item[] items = new Item[] { new Item("Aged Brie", 2, 1) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertTrue(app.items[0].quality>1);
+    }
+
+    ///Testing the item Sulfaras quality
+    ///The Quality should not decrease
+    @Test
+    void testItemSulfarasQuality() {
+        Item[] items = new Item[] { new Item("Sulfuras, Hand of Ragnaros", 0, 80) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertFalse(app.items[0].quality<80);
+    }
+
+    ///Testing the item Back Stage quality
+    ///The Quality should increase by 2 for less than 11 days sell in
+    @Test
+    void testItemBackstageQualilty() {
+        Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 10, 44) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertTrue(Objects.equals(app.items[0].quality, 46));
+    }
+
+    ///Testing the item Back Stage quality
+    ///The Quality should increase by 3 for less than 6 days sell in
+    @Test
+    void testItemBackstageQul() {
+        Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 5, 44) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertTrue(Objects.equals(app.items[0].quality, 47));
+    }
+
+    ///Testing the item Back Stage quality
+    ///The Quality should increase more than 50
+    @Test
+    void testItemBackstage() {
+        Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 5, 49) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertFalse(app.items[0].quality>50);
     }
 }
