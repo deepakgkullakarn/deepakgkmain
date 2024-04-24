@@ -28,3 +28,19 @@ The other relies on your CLASSPATH being set correctly in [environment.gr](../te
 
     executable:com.gildedrose.TexttestFixture
     interpreter:java
+
+
+## Steps followed to execute Test cases
+    ./gradlew test
+
+## To Build
+    ./gradlew build
+
+## After Creating workflow Pushed the artifact to GIT
+
+    cd <PROJECT_LOCATION>
+    git init
+    git add .
+    git commit -m "<COMMENTS>"
+    git remote add origin https://github.com/deepakgkullakarn/deepakgkmain.git
+    git push

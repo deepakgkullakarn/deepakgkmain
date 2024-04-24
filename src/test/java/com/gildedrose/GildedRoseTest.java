@@ -2,7 +2,7 @@ package com.gildedrose;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class GildedRoseTest {
 
@@ -11,8 +11,8 @@ class GildedRoseTest {
         Item[] items = new Item[] { new Item("foo", 0, 0) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
-        assertEquals("fixme", app.items[0].name);
-        //assertEquals("foo", app.items[0].name);
+        //assertEquals("fixme", app.items[0].name);
+        assertEquals("foo", app.items[0].name);
     }
 
     ///Testing the Conjured Item degrade quality for each passing day
@@ -43,5 +43,15 @@ class GildedRoseTest {
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(2, app.items[0].quality);
+    }
+
+    ///Testing the Conjured Item degrade quality after selling day is passed
+    ///The Quality should not be negative
+    @Test
+    void testConjQualAfterSellIn() {
+        Item[] items = new Item[] { new Item("Conjured Mana Cake", -1, 2) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertTrue(app.items[0].quality>-1);
     }
 }
