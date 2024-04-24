@@ -11,8 +11,8 @@ class GildedRoseTest {
         Item[] items = new Item[] { new Item("foo", 0, 0) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
-        //assertEquals("fixme", app.items[0].name);
-        assertEquals("foo", app.items[0].name);
+        assertEquals("fixme", app.items[0].name);
+        //assertEquals("foo", app.items[0].name);
     }
 
     ///Testing the Conjured Item degrade quality for each passing day
@@ -25,7 +25,7 @@ class GildedRoseTest {
         assertEquals(4, app.items[0].quality);
     }
 
-    ///Testing the Conjured Item degrade quality for on selling day
+    ///Testing the Conjured Item degrade quality on selling day
     ///The Quality should reduce by four times
     @Test
     void testConjQualOnSellIn() {
